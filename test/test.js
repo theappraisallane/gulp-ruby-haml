@@ -111,7 +111,6 @@ describe('basic Haml with view_helper', function() {
   });
 });
 
-
 describe('Haml conversion without haml installed', function() {
   'use strict';
   var inPath = path.join(fixtureDir, 'basic.haml');

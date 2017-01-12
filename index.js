@@ -29,7 +29,10 @@ module.exports = function(opt) {
     for (var key in opt) {
       options[key] = opt[key];
     }
-    options.outExtension = options.outExtension || '.html';
+
+    if (options.outExtension === undefined || options.outExtension === null) {
+      options.outExtension = '.html';
+    }
 
     var fileContents = file.contents.toString('utf8');
     var hamlPath = options.hamlPath || 'haml';
@@ -113,7 +116,7 @@ module.exports = function(opt) {
     cp.stderr.on('data', function(data) {
       var str = data.toString();
       if (str.indexOf(hamlPath + ': command not found') > -1) {
-        errors += noHamlError + "\n";
+        errors += noHamlError + '\n';
       }
       errors += str;
     });
